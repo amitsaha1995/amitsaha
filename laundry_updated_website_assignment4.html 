@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laundry Services</title>
+  <style>
+    .features {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 60px 20px;
+  background-color: #fff;
+  flex-wrap: wrap;
+  gap: 40px;
+  text-align: center;
+}
+
+.feature {
+  flex: 1 1 220px;
+  max-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature img {
+  width: 70px;
+  margin-bottom: 20px;
+  filter: grayscale(20%);
+}
+
+.feature h3 {
+  font-size: 1.3em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 0.95em;
+  color: #666;
+  line-height: 1.5;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body { background-color: #fff; color: #333; }
+
+    /* Navbar */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 60px; background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .logo { font-size: 20px; font-weight: bold; }
+    nav ul { list-style: none; display: flex; gap: 30px; }
+    nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
+    nav ul li a:hover { color: #007BFF; }
+    .username { background-color: #EAF2FF; padding: 8px 16px; border-radius: 25px; color: #007BFF; font-weight: 500; cursor: pointer; }
+
+    /* Hero */
+    .hero {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 60px 80px; flex-wrap: wrap;
+    }
+    .hero-text { max-width: 500px; }
+    .hero-text h1 { font-size: 40px; color: #222; }
+    .hero-text h1 span { color: #007BFF; }
+    .hero-text p { margin: 20px 0; color: #555; line-height: 1.6; }
+    .hero-text button {
+      background-color: #007BFF; color: #fff; border: none; padding: 12px 24px;
+      border-radius: 30px; cursor: pointer; font-size: 16px; transition: 0.3s;
+    }
+    .hero-text button:hover { background-color: #0056cc; }
+    .hero img { width: 300px; margin-top: 20px; }
+
+    /* Achievements */
+    .achievements {
+      background-color: #007BFF; color: white; display: flex;
+      justify-content: space-around; align-items: center; padding: 30px 0; text-align: center;
+    }
+    .achievements div h2 { font-size: 26px; }
+    .achievements div p { font-size: 14px; }
+
+    /* Services */
+    .services-section { padding: 60px 80px; background-color: #f9f9f9; }
+    .services-section h2 { text-align: center; font-size: 30px; margin-bottom: 10px; }
+    .services-section p { text-align: center; color: #777; margin-bottom: 40px; }
+
+    .services-container { display: flex; gap: 40px; flex-wrap: wrap; justify-content: space-between; }
+
+    .service-list, .cart-section {
+      flex: 1; min-width: 320px; background: #fff; border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 20px;
+    }
+
+    .service-item {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid #eee; padding: 12px 0;
+    }
+    .service-item:last-child { border: none; }
+
+    .add-btn, .remove-btn {
+      border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer;
+    }
+    .add-btn { background-color: #007BFF; color: #fff; }
+    .remove-btn { background-color: #ff4d4d; color: #fff; }
+
+    .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    .cart-table th, .cart-table td {
+      text-align: left; padding: 8px; border-bottom: 1px solid #ddd;
+    }
+    .total { font-weight: bold; text-align: right; }
+
+    .book-form input {
+      width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;
+    }
+    .book-form button {
+      width: 100%; background-color: #007BFF; color: #fff; border: none; padding: 12px;
+      border-radius: 6px; font-size: 16px; cursor: pointer;
+    }
+
+    /* Newsletter & Footer */
+    .newsletter {
+      background-color: #007BFF; color: white; text-align: center;
+      padding: 40px 20px;
+    }
+    .newsletter input {
+      padding: 10px; border: none; border-radius: 5px; margin: 10px;
+      width: 200px; max-width: 80%;
+    }
+    .newsletter button {
+      background-color: #fff; color: #007BFF; padding: 10px 20px;
+      border: none; border-radius: 5px; font-weight: bold; cursor: pointer;
+    }
+
+    footer {
+      display: flex; flex-wrap: wrap; justify-content: space-around;
+      padding: 40px; background: #f4f4f4; color: #444;
+    }
+    footer div { max-width: 250px; }
+    footer h3 { margin-bottom: 10px; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 6px; }
+    footer ul li a { text-decoration: none; color: #444; }
+    .social a { margin-right: 10px; text-decoration: none; font-size: 18px; color: #007BFF; }
+
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; }
+      .achievements { flex-direction: column; gap: 15px; }
+      .services-container { flex-direction: column; }
+    }
+
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+    
+
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">Logo</div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="username">Username</div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Revitalize Your Clothes with Expert <span>Laundry Services!</span></h1>
+      <p>From premium dry cleaning to swift wash and fold, we deliver care and convenience. Schedule a pickup and rediscover the freshness of your clothes today!</p>
+      <button>📅 Book a service today!</button>
+    </div>
+    <img src="laundry.jpg" alt="Laundry Machine">
+  </section>
+
+  <!-- Achievements -->
+  <section class="achievements">
+    <div><h2>15+</h2><p>Laundry Services</p></div>
+    <div><h2>240+</h2><p>Happy Customers</p></div>
+    <div><h2>2+ Yrs</h2><p>Experience</p></div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services-section">
+    <h2>Our Services</h2>
+    <p>Click on Add to Cart to book your services.</p>
+    <div class="services-container">
+
+      <!-- Left: Service List -->
+      <div class="service-list">
+        <div class="service-item"><span>🧺 Dry Cleaning - ₹200</span><button class="add-btn" onclick="addToCart('Dry Cleaning',200)">Add</button></div>
+        <div class="service-item"><span>👕 Wash & Fold - ₹100</span><button class="add-btn" onclick="addToCart('Wash & Fold',100)">Add</button></div>
+        <div class="service-item"><span>🧦 Ironing - ₹30</span><button class="add-btn" onclick="addToCart('Ironing',30)">Add</button></div>
+        <div class="service-item"><span>🧴 Stain Removal - ₹500</span><button class="add-btn" onclick="addToCart('Stain Removal',500)">Add</button></div>
+        <div class="service-item"><span>👞 Leather Cleaning - ₹999</span><button class="add-btn" onclick="addToCart('Leather Cleaning',999)">Add</button></div>
+        <div class="service-item"><span>👗 Wedding Dress - ₹2800</span><button class="add-btn" onclick="addToCart('Wedding Dress',2800)">Add</button></div>
+      </div>
+
+      <!-- Right: Cart & Booking -->
+      <div class="cart-section">
+        <table class="cart-table" id="cartTable">
+          <tr><th>S.No</th><th>Service</th><th>Price</th></tr>
+        </table>
+        <p class="total" id="totalAmount">Total: ₹0</p>
+        <div class="book-form">
+          <input type="text" placeholder="Full Name">
+          <input type="email" placeholder="Email ID">
+          <input type="tel" placeholder="Phone Number">
+          <button>Book Now</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+<section class="features">
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/1039/1039323.png" alt="Premium Services">
+    <h3>Premium Services</h3>
+    <p>Elevate your wardrobe with our meticulous dry cleaning, ensuring garments look and feel as good as new.</p>
+  </div>
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/1027/1027030.png" alt="Quick Support">
+    <h3>Quick Support</h3>
+    <p>We're committed to providing prompt solutions to ensure your experience is smooth and worry-free.</p>
+  </div>
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/3190/3190613.png" alt="Hassle Free Delivery">
+    <h3>Hassle Free Delivery</h3>
+    <p>Enjoy seamless service with our convenient pickup and delivery options, tailored to your schedule.</p>
+  </div>
+  <div class="feature">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Affordable Prices">
+    <h3>Affordable Prices</h3>
+    <p>Experience exceptional care without breaking the bank – our affordable prices make laundry day stress-free.</p>
+  </div>
+</section>
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Subscribe to our newsletter</h2>
+    <input type="text" placeholder="Full name">
+    <input type="email" placeholder="Email">
+    <button>Subscribe</button>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div>
+      <h3>Logo</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+    </div>
+    <div>
+      <h3>Important Links</h3>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Use</a></li>
+        <li><a href="#">Refund Policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p>mail@site.com</p>
+      <p>+91 91234 56780</p>
+    </div>
+    <div class="social">
+      <h3>Follow Us</h3>
+      <a href="#">🌐</a><a href="#">📘</a><a href="#">📸</a>
+    </div>
+  </footer>
+
+  <!-- EmailJS Integration -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("8sRbCbn07SsB0_S6Y"); // Replace with your EmailJS Public Key
+    })();
+
+    let cart = [];
+
+    function addToCart(service, price) {
+      cart.push({ service, price });
+      renderCart();
+    }
+
+    function renderCart() {
+      const table = document.getElementById("cartTable");
+      table.innerHTML = "<tr><th>S.No</th><th>Service</th><th>Price</th></tr>";
+      let total = 0;
+      cart.forEach((item, i) => {
+        table.innerHTML += `<tr><td>${i + 1}</td><td>${item.service}</td><td>₹${item.price}</td></tr>`;
+        total += item.price;
+      });
+      document.getElementById("totalAmount").innerText = "Total: ₹" + total;
+    }
+
+    // 📧 Send Email on Book Now
+    document.querySelector(".book-form button").addEventListener("click", function() {
+      const name = document.querySelector(".book-form input[placeholder='Full Name']").value.trim();
+      const email = document.querySelector(".book-form input[placeholder='Email ID']").value.trim();
+      const phone = document.querySelector(".book-form input[placeholder='Phone Number']").value.trim();
+
+      if (!name || !email || !phone || cart.length === 0) {
+        alert("Please fill all details and add at least one service to cart!");
+        return;
+      }
+
+      const cartDetails = cart.map((item, i) => `${i + 1}. ${item.service} - ₹${item.price}`).join("\n");
+      const total = cart.reduce((sum, i) => sum + i.price, 0);
+
+      const templateParams = {
+        customer_name: name,
+        customer_email: email,
+        customer_phone: phone,
+        cart_items: cartDetails,
+        total_price: "₹" + total
+      };
+
+      emailjs.send("service_j4cnfvo", "template_wd2u74w", templateParams)
+        .then(function(response) {
+          alert("✅ Booking details sent successfully!");
+          cart = [];
+          renderCart();
+        }, function(error) {
+          alert("❌ Failed to send email: " + error.text);
+        });
+    });
+  </script>
+
+</body>
+</html>
